@@ -1,0 +1,20 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/setup@v1
+        with:
+          ghc-version: "8.10.4"
+          enable-stack: true
+          stack-version: "2.7.1"
+      - run: |
+          stack \
+          --system-ghc \
+          test \
+          --pedantic

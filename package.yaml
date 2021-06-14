@@ -1,0 +1,41 @@
+name: toy-scheme
+version: 0.1.0.0
+github: "rvarago/toy-scheme"
+license: BSD3
+author: "Rafael Varago"
+maintainer: "varago.rafael@gmail.com"
+copyright: "2021 Rafael Varago"
+
+extra-source-files:
+  - README.md
+  - ChangeLog.md
+
+description: Please see the README on GitHub at <https://github.com/rvarago/toy-scheme#readme>
+
+dependencies:
+  - base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  toy-scheme-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - toy-scheme
+
+tests:
+  toy-scheme-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - toy-scheme
